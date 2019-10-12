@@ -1,5 +1,17 @@
 (function () {
     class Model {
+        constructor(url){
+            this.getUrl = url;
+        }
+
+        getData(){
+            return fetch(this.getUrl).then(response => response.json())
+                .then(data => {
+                    console.log('Initial data is loaded');
+                    return data;
+                })
+        }
+
         saveData(item) {
             console.log('Saving item..' + item.name);
             let iphone = {
